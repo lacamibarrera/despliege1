@@ -1,29 +1,19 @@
-
 import dj_database_url
 import os
 from pathlib import Path
-from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', default='zA1OEuJfLrgnQEZOe9GgfzSbLYGSX28H')
-
+SECRET_KEY = 'django-insecure-c!ceov7n*rl%+u788j7jiu(&!15&u%r(qc)9ra7dy%fsuef0np'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['dpg-ctibdkbqf0us73bjmdg0-a']
+ALLOWED_HOSTS = ['mysite.onrender.com']
 
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-# Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -51,7 +41,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,7 +62,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default':dj_database_url.config(
-        default = ('DATABASE_URL', 'postgresql://mysite:zA1OEuJfLrgnQEZOe9GgfzSbLYGSX28H@dpg-ctibdkbqf0us73bjmdg0-a.oregon-postgres.render.com/mysite_8e5p'),
+        default = 'postgresql://mysite:zA1OEuJfLrgnQEZOe9GgfzSbLYGSX28H@dpg-ctibdkbqf0us73bjmdg0-a.oregon-postgres.render.com/mysite_8e5p',
         conn_max_age= 600
     )
 }
@@ -120,3 +110,5 @@ if not DEBUG:
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
