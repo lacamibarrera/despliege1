@@ -11,7 +11,7 @@ SECRET_KEY = 'django-insecure-c!ceov7n*rl%+u788j7jiu(&!15&u%r(qc)9ra7dy%fsuef0np
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['mysite.onrender.com']
+ALLOWED_HOSTS = ['mysite.onrender.com','localhost', '127.0.0.1']
 
 
 
@@ -103,7 +103,7 @@ STATIC_URL ='/static/'
 
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
     # and renames the files with unique names for each version to support long-term caching
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
